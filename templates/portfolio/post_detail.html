@@ -20,32 +20,33 @@
 
     <hr/>
     <div>
-      <h4> Disfrutando del post? Dale un like!</h4>
-      <a class="text-muted" href=" {{ object.get_like_url }} ">
-        .<i class="fas fa-thumbs-up ml-2"></i>
-        {{ object.get_like_count }}
-      </a>
-      <hr/>
       {% if request.user.is_authenticated %}
+        <h4> Disfrutando del post? Dale un like!</h4>
+        <a class="text-muted" href=" {{ object.get_like_url }} ">
+          .<i class="fas fa-thumbs-up ml-2"></i>
+          {{ object.get_like_count }}
+        </a>
+        <hr/>
         <h4>Deja un comentario debajo</h4>
         <form method="POST">
           {% csrf_token %}
           {{form| crispy}}
           <button class='btn btn-primary' type='submit'>Comment</button>
         </form>
-          <h5>Comments</h5>
-          {% for comment in object.comments %}
-            <p>
-            De {{comment.user}} :
-            <br />
-            {{comment.content}}
-            <br />
-            <small> {{comment.timestamp| timesince}} </small>
-            </p>
-          {% endfor %}
+
       {% else %}
             <a href="{%url 'account_login'%}" class='btn btn-primary btn-block'>Login to comment</a>
       {% endif %}
+      <h5>Comments</h5>
+      {% for comment in object.comments %}
+        <p>
+        De {{comment.user}} :
+        <br />
+        {{comment.content}}
+        <br />
+        <small> {{comment.timestamp| timesince}} </small>
+        </p>
+      {% endfor %}
 
 
     </div>    

@@ -50,7 +50,8 @@ INSTALLED_APPS = [
 
     'apps.portfolio',
 ]
-
+ACCOUNT_USERNAME_REQUIRED = True
+LOGIN_REDIRECT_URL = ''
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [

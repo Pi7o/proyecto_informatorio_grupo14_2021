@@ -20,6 +20,7 @@ class Post(models.Model):
     last_update = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField()
+    hidden = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -32,7 +33,7 @@ class Post(models.Model):
 
     @property
     def comments(self):
-        return self.comment_set.all()
+        return self.comment_set.filter(hidden=False)
 
     @property
     def get_comment_count(self):
@@ -52,6 +53,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
+    hidden = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user.username

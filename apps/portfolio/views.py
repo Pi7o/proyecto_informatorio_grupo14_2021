@@ -43,10 +43,14 @@ class PostCreateView(CreateView):
     model = Post
     success_url = '/'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'Create'
+            'view_type': 'Crear Post'
         })
         return context
 
@@ -59,7 +63,7 @@ class PostUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'Update'
+            'view_type': 'Actualizar'
         })
         return context
 
@@ -77,9 +81,3 @@ def like(request, slug):
         return redirect('detail', slug=slug)
     Like.objects.create(user=request.user, post=post)
     return redirect('detail', slug=slug)
-
-# Create your views here.
-# def index(request):
-#    hoy = datetime.datetime.now()
-#    html='<html><body><p> Hola! <br/> La fecha de hoy es</p> %s </body></html>' %hoy
-#    return HttpResponse(html)
