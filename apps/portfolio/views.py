@@ -1,9 +1,11 @@
+from django.db.models.fields import DateField
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Post, PostView, Like, Comment
 from .forms import PostForm, CommentForm
-
+from django.template.defaultfilters import slugify
+from time import gmtime, strftime
 # modelos
 
 
@@ -44,7 +46,10 @@ class PostCreateView(CreateView):
     success_url = '/'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        creador = self.request.user
+        tiempo = strftime("%d_%Y_%H-%M-%S", gmtime())
+        form.instance.author = creador
+        form.instance.slug = slugify(creador.__str__() + tiempo)
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
