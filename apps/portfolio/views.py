@@ -4,9 +4,18 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from .models import Post, PostView, Like, Comment
 from .forms import PostForm, CommentForm
+from .filters import PostFilter
 from django.template.defaultfilters import slugify
 from time import gmtime, strftime
 # modelos
+
+
+def search_page(request):
+    posts = Post.objects.all()
+    my_filter = PostFilter(request.GET, queryset=posts)
+    posts_f = my_filter.qs
+    context = {'my_filter': my_filter, 'posts_f': posts_f}
+    return render(request, 'search-page.html', context)
 
 
 class PostListView(ListView):

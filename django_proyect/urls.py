@@ -24,18 +24,22 @@ from apps.portfolio.views import (
     PostUpdateView,
     PostDeleteView,
     PostCreateView,
-    like
+    like,
+    search_page,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('search-page/', search_page, name='search-page'),
     path('', PostListView.as_view(), name='list'),
     path('create/', PostCreateView.as_view(), name='create'),
     path('<slug>/', PostDetailView.as_view(), name='detail'),
     path('<slug>/update/', PostUpdateView.as_view(), name='update'),
     path('<slug>/delete/', PostDeleteView.as_view(), name='delete'),
-    path('like/<slug>/', like, name='like')
+    path('like/<slug>/', like, name='like'),
+
+
 ]
 
 if settings.DEBUG:
