@@ -27,11 +27,14 @@ from apps.portfolio.views import (
     like,
     search_page,
 )
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('search-page/', search_page, name='search-page'),
+    path('about/', TemplateView.as_view(template_name="about.html"), name='about'),
+    path('ods/', TemplateView.as_view(template_name="ods.html"), name='ods'),
     path('', PostListView.as_view(), name='list'),
     path('create/', PostCreateView.as_view(), name='create'),
     path('<slug>/', PostDetailView.as_view(), name='detail'),
