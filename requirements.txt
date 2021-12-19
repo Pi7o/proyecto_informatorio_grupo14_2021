@@ -19,7 +19,7 @@ sqlparse==0.4.2
 toml==0.10.2
 typing_extensions==4.0.1
 urllib3==1.26.7
-Django==3.2.9
+Django>=3.2.10
 django-allauth==0.46.0
 django-crispy-forms==1.13.0
 django-filter==21.1
