@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',
     'django_filters',
     'crispy_forms',
 
@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'apps.portfolio',
 ]
 ACCOUNT_USERNAME_REQUIRED = True
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
