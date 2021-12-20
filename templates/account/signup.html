@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-  <h1>{% trans "Registrarse" %}</h1>
+  <h1>Registrarse  </h1>
 
   <p>{% blocktrans %}Ya tienes una cuenta? Entonces <a href="{{ login_url }}">accede</a>.{% endblocktrans %}</p>
 
@@ -16,7 +16,7 @@
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
-    <button type="submit" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</button>
+    <button type="submit" class="btn btn-primary">Registrarse &raquo;</button>
   </form>
 </div>
 {% endblock %}

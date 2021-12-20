@@ -28,7 +28,7 @@ SECRET_KEY = '+onskj%21868*zq1lbdol^i_v-%jb$l*jp%vm(t*nl1zg29j17'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0", "192.168.0.11"]
+ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
 
 # Application definition
@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',
     'django_filters',
     'crispy_forms',
 
@@ -52,11 +53,13 @@ INSTALLED_APPS = [
     'apps.portfolio',
 ]
 ACCOUNT_USERNAME_REQUIRED = True
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -140,8 +143,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(os.path.dirname(BASE_DIR), 'static')]
+STATICFILES_DIRS = [os.path.join(os.path.dirname(BASE_DIR), 'static'), ]
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_root')
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
