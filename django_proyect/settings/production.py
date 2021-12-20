@@ -21,7 +21,7 @@ DATABASES = {
 
 db_from_env = dj_database_url.config(conn_max_age=00)
 DATABASES['default'].update(db_from_env)
-django_heroku.settings(locals)
+django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
