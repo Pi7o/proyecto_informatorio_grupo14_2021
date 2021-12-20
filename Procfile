@@ -1,1 +1,1 @@
-web: gunicorn proyecto-informatorio-grupo14-2021.wsgi --log-file -
+
