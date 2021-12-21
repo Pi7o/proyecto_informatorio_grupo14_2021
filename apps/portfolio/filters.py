@@ -6,7 +6,7 @@ from .models import *
 
 
 class PostFilter(django_filters.FilterSet):
-    start_date = DateFilter(label='Deste', field_name="timestamp",
+    start_date = DateFilter(label='Desde', field_name="timestamp",
                             lookup_expr='gte')
     end_date = DateFilter(label='Hasta', field_name="timestamp",
                           lookup_expr='lte')
