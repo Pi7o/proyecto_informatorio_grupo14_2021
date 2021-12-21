@@ -1,9 +1,4 @@
-html [class] > p, 
-html * > * > p,
-html [class] > * > p,
-html [id] > * > p,
-html [class] > * > * > p,
-html [id] > * > * > p {
+html [class] p, html [id] p {
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
 }
@@ -16,7 +11,7 @@ html [id] > * > * > p {
 
 .card-body p{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 14px !important;
     line-height: 18px;
 }
 
