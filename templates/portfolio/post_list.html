@@ -11,6 +11,8 @@
           <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ object.title }}</h5>
+            <p>Tag: {{ object.post_tag }}</p>
+            <hr/>
             <p class="card-text">{{ object.content|truncatechars:40 }}</p>
           </a>
             <hr/>

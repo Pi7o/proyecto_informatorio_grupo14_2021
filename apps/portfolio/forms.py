@@ -1,6 +1,7 @@
 from typing_extensions import Required
 from django import forms
 from .models import Post, Comment
+from django.utils.translation import gettext_lazy as _
 
 
 class PostForm(forms.ModelForm):
@@ -8,6 +9,13 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('__all__')
         exclude = ['hidden', 'author', 'slug']
+        labels = {
+            'title': _('Titulo'),
+            'content': _('Contenido'),
+            'thumbnail': _('Imagen'),
+            'post_tag': _('Tag')
+
+        }
 
 
 class CommentForm(forms.ModelForm):
@@ -18,3 +26,6 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content', )
+        labels = {
+            'content': _('Comentario')
+        }

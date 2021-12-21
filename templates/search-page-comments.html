@@ -1,0 +1,29 @@
+{% extends "inicio.html" %} 
+
+{% block content2 %}
+    <h1>Filtros de busqueda:</h1>
+    <p>Por usuario u comentario</p>
+    <form method="get">
+        {{my_filter.form}}
+        <button class="btn btn-primary" type= "submit">Buscar</button>
+    </form>
+    <div class= "row"> 
+        {% for object in posts_f %}
+          {% if not object.hidden %}
+            <div class="col-4">
+              <a href="{{ object.post.get_absolute_url }}">  
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ object.user }}</h5>
+                  <p class="card-text">{{ object.content|truncatechars:40 }}</p>
+                  <p class= "card-text">
+                    Posted {{ object.timestamp | timesince }} ago
+                  </p>
+                </div>
+              </div>
+            
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+{% endblock content2 %}

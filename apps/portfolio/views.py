@@ -4,8 +4,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from .models import Post, PostView, Like, Comment
 from .forms import PostForm, CommentForm
-from .filters import PostFilter
+from .filters import CommentFilter, PostFilter
 from django.template.defaultfilters import slugify
+from django.utils.translation import gettext_lazy as _
 from time import gmtime, strftime
 # modelos
 
@@ -16,6 +17,14 @@ def search_page(request):
     posts_f = my_filter.qs
     context = {'my_filter': my_filter, 'posts_f': posts_f}
     return render(request, 'search-page.html', context)
+
+
+def comment_search_page(request):
+    posts = Comment.objects.all().filter(hidden=False)
+    my_filter = CommentFilter(request.GET, queryset=posts)
+    posts_f = my_filter.qs
+    context = {'my_filter': my_filter, 'posts_f': posts_f}
+    return render(request, 'search-page-comments.html', context)
 
 
 class PostListView(ListView):

@@ -26,6 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('search-page/', views.search_page, name='search-page'),
+    path('search-page-comments/', views.comment_search_page,
+         name='search-page-comments'),
     path('about/', generic.TemplateView.as_view(template_name="about.html"), name='about'),
     path('ods/', generic.TemplateView.as_view(template_name="ods.html"), name='ods'),
     path('', views.PostListView.as_view(), name='list'),

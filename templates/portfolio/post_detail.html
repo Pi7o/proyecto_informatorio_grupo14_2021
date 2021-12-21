@@ -7,6 +7,8 @@
       <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
       <h1>{{ object.title }}</h1>
       <hr/>
+      <p>Tag: {{ object.post_tag }}</p>
+      <hr/>
       <p>
         <span><i class="fas fa-eye ml-2"></i> {{ object.get_view_count }}</span>
         <span><i class="fas fa-thumbs-up ml-2"></i> {{ object.get_like_count }}</span>
@@ -31,7 +33,7 @@
         <form method="POST">
           {% csrf_token %}
           {{form| crispy}}
-          <button class='btn btn-primary' type='submit'>Comment</button>
+          <button class='btn btn-primary' type='submit'>Commentar</button>
         </form>
 
       {% else %}

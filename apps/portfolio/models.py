@@ -16,6 +16,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     thumbnail = models.ImageField()
+    post_tag = models.CharField(max_length=20)
     timestamp = models.DateTimeField(auto_now=True)
     last_update = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
