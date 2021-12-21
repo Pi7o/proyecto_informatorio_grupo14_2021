@@ -9,7 +9,7 @@ html [class] p, html [id] p {
     line-height: 18px;
 }
 
-.card-body p{
+.card-body p, .card-body li{
     font-family: 'Roboto', sans-serif;
     font-size: 14px !important;
     line-height: 18px;
