@@ -1,1 +1,1 @@
-python manage.py runserver --insecure
+web: python manage.py runserver 0.0.0.0:$PORT --insecure --noreload
