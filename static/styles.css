@@ -15,9 +15,9 @@ html [id] > * > * > p {
 }
 
 .card-body p{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 16px;
-    line-height: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 .btn-primary, .btn-primary:active, .btn-primary:visited {
