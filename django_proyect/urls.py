@@ -18,29 +18,22 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 # importing apps
-from apps.portfolio.views import (
-    PostListView,
-    PostDetailView,
-    PostUpdateView,
-    PostDeleteView,
-    PostCreateView,
-    like,
-    search_page,
-)
-from django.views.generic import TemplateView
+from apps.portfolio import views
+from django.views import generic
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('search-page/', search_page, name='search-page'),
-    path('about/', TemplateView.as_view(template_name="about.html"), name='about'),
-    path('ods/', TemplateView.as_view(template_name="ods.html"), name='ods'),
-    path('', PostListView.as_view(), name='list'),
-    path('create/', PostCreateView.as_view(), name='create'),
-    path('<slug>/', PostDetailView.as_view(), name='detail'),
-    path('<slug>/update/', PostUpdateView.as_view(), name='update'),
-    path('<slug>/delete/', PostDeleteView.as_view(), name='delete'),
-    path('like/<slug>/', like, name='like'),
+    path('search-page/', views.search_page, name='search-page'),
+    path('about/', generic.TemplateView.as_view(template_name="about.html"), name='about'),
+    path('ods/', generic.TemplateView.as_view(template_name="ods.html"), name='ods'),
+    path('', views.PostListView.as_view(), name='list'),
+    path('create/', views.PostCreateView.as_view(), name='create'),
+    path('<slug>/', views.PostDetailView.as_view(), name='detail'),
+    path('<slug>/update/', views.PostUpdateView.as_view(), name='update'),
+    path('<slug>/delete/', views.PostDeleteView.as_view(), name='delete'),
+    path('like/<slug>/', views.like, name='like'),
 
 
 ]
@@ -50,3 +43,8 @@ if settings.DEBUG:
                           document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
+else:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT, show_indexes=True)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT, show_indexes=True)
