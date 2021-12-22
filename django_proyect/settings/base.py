@@ -29,7 +29,7 @@ SECRET_KEY = '+onskj%21868*zq1lbdol^i_v-%jb$l*jp%vm(t*nl1zg29j17'
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
-    '127.0.0.1', 'https://proyectoinf-grupo14.herokuapp.com', 'localhost:8080'
+    'https://proyectoinf-grupo14.herokuapp.com'
 ]
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
