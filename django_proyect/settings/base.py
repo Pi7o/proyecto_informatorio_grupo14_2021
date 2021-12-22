@@ -28,9 +28,10 @@ SECRET_KEY = '+onskj%21868*zq1lbdol^i_v-%jb$l*jp%vm(t*nl1zg29j17'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',
-                 'https://proyectoinf-grupo14.herokuapp.com', 'localhost:8080']
-CSRF_TRUSTED_ORIGINS = ["127.0.0.1", ".herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = [
+    '127.0.0.1', 'https://proyectoinf-grupo14.herokuapp.com', 'localhost:8080'
+]
+ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
 # Application definition
 
